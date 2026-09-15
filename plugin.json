@@ -1,0 +1,33 @@
+{
+  "$schema": "https://acode.app/schema/plugin/v0.1.0.json",
+  "id": "com.byteforge88.cherryblossom.theme",
+  "name": "CherryBlossom",
+  "main": "main.js",
+  "version": "1.0.0",
+  "readme": "readme.md",
+  "changelogs": "changelog.md",
+  "repository": "https://github.com/ByteForge88/CherryBlossom-Theme",
+  "icon": "icon.png",
+  "files": [],
+  "minVersionCode": 290,
+  "license": "MIT",
+  "keywords": [
+    "theme",
+    "cherry blossom",
+    "sakura pink",
+    "petal cream",
+    "warm bark",
+    "semi dark",
+    "editor",
+    "codemirror",
+    "syntax highlighting"
+  ],
+  "price": 0,
+  "permissions": [],
+  "author": {
+    "name": "ByteForge88",
+    "github": "ByteForge88",
+    "url": "https://github.com/ByteForge88/"
+  },
+  "description": "Vibrant sakura-pink, petal-cream, and warm-bark semi-dark app + editor theme for Acode with comprehensive syntax highlighting."
+}
