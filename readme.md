@@ -49,10 +49,6 @@ Actual highlighting depends on what tags the active language grammar emits, but 
 - Number warm gold: `#E0B06D`
 - Comment warm muted rose: `#AA918B` (*italic*)
 
-## First-install thank-you
-
-On the plugin's first initialization after installation, CherryBlossom shows a one-time thank-you dialog. It uses Acode's `firstInit` plugin flag, so it does not pop up on every normal startup.
-
 ## Build
 
 ```bash

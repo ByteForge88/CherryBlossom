@@ -46,17 +46,12 @@ class CherryBlossomThemePlugin {
     const add = (tag, style) => {
       const tags = Array.isArray(tag) ? tag.filter(Boolean) : tag;
       if (!tags || (Array.isArray(tags) && tags.length === 0)) return;
-      // Force every syntax token to normal weight. Acode/CodeMirror can
-      // otherwise inherit bold keyword/class styling from another base theme.
       styles.push({ tag: tags, fontWeight: "400", ...style });
     };
 
     const mod = (modifier, tag) =>
       typeof modifier === "function" && tag ? modifier(tag) : null;
-
-    // ---------------------------------------------------------------------
-    // Base identifiers
-    // ---------------------------------------------------------------------
+      
     add(t.name, { color: COLORS.cream });
     add(t.variableName, { color: "#F2D4CE" });
     add(mod(t.definition, t.variableName), {
@@ -74,11 +69,6 @@ class CherryBlossomThemePlugin {
       color: "#DF9A88",
     });
 
-    // ---------------------------------------------------------------------
-    // Namespaces / classes / types / fields
-    // pocketmine\\plugin -> namespace tan
-    // PluginBase          -> lighter class tan
-    // ---------------------------------------------------------------------
     add(t.namespace, { color: "#D0AC82" });
     add(t.typeName, { color: "#E0BD90" });
     add(t.className, { color: "#F0C9A6" });
@@ -95,9 +85,6 @@ class CherryBlossomThemePlugin {
     });
     add(t.attributeName, { color: "#DBAA7D" });
 
-    // ---------------------------------------------------------------------
-    // Literals: strings, chars, ints, floats, bool, null, regex, URLs, etc.
-    // ---------------------------------------------------------------------
     add(t.literal, { color: "#E5B889" });
     add(t.string, { color: "#EFC09D" });
     add(t.docString, { color: "#E5B090", fontStyle: "italic" });
@@ -114,9 +101,6 @@ class CherryBlossomThemePlugin {
     add(t.color, { color: "#EAB286" });
     add(t.url, { color: "#E0B88A", textDecoration: "underline" });
 
-    // ---------------------------------------------------------------------
-    // Keywords: PHP class/use/public/static/return/self/null/etc.
-    // ---------------------------------------------------------------------
     add(t.keyword, { color: COLORS.pink });
     add(t.self, { color: "#F5B2BE" });
     add(t.null, { color: "#DD8799" });
@@ -128,9 +112,6 @@ class CherryBlossomThemePlugin {
     add(t.definitionKeyword, { color: "#F5A9B9" });
     add(t.moduleKeyword, { color: "#E58FA3" });
 
-    // ---------------------------------------------------------------------
-    // Operators
-    // ---------------------------------------------------------------------
     add(t.operator, { color: "#D1A08D" });
     add(t.derefOperator, { color: "#D8A28A" });
     add(t.arithmeticOperator, { color: "#D1A06F" });
@@ -142,9 +123,6 @@ class CherryBlossomThemePlugin {
     add(t.typeOperator, { color: "#D4A475" });
     add(t.controlOperator, { color: "#DF8E98" });
 
-    // ---------------------------------------------------------------------
-    // Punctuation / brackets
-    // ---------------------------------------------------------------------
     add(t.punctuation, { color: COLORS.punctuation });
     add(t.separator, { color: "#C3A39F" });
     add(t.bracket, { color: "#D0ADA6" });
@@ -153,9 +131,6 @@ class CherryBlossomThemePlugin {
     add(t.paren, { color: "#D2ACA4" });
     add(t.brace, { color: "#DAB5AA" });
 
-    // ---------------------------------------------------------------------
-    // Comments — all italic, including line/block/doc comments
-    // ---------------------------------------------------------------------
     add(t.comment, { color: COLORS.muted, fontStyle: "italic" });
     add(t.lineComment, { color: "#A98E88", fontStyle: "italic" });
     add(t.blockComment, { color: "#AD9189", fontStyle: "italic" });
@@ -164,9 +139,6 @@ class CherryBlossomThemePlugin {
       fontStyle: "italic",
     });
 
-    // ---------------------------------------------------------------------
-    // Prose / Markdown tags supported by the same CodeMirror tag set
-    // ---------------------------------------------------------------------
     add(t.content, { color: COLORS.text });
     add(t.heading, { color: "#F5B0C0" });
     add(t.heading1, { color: "#F7AFC0" });
@@ -184,9 +156,6 @@ class CherryBlossomThemePlugin {
     add(t.monospace, { color: "#EBC3A0" });
     add(t.strikethrough, { color: "#C3A09C", textDecoration: "line-through" });
 
-    // ---------------------------------------------------------------------
-    // Diff / diagnostics / metadata
-    // ---------------------------------------------------------------------
     add(t.inserted, { color: COLORS.inserted });
     add(t.deleted, { color: COLORS.deleted, textDecoration: "line-through" });
     add(t.changed, { color: "#E7AB87" });
@@ -277,7 +246,7 @@ class CherryBlossomThemePlugin {
     try {
       this.editorThemes.unregister(EDITOR_THEME_ID);
     } catch (_) {
-      // Theme was not registered yet.
+      //NOOP
     }
 
     this.editorThemes.register({
@@ -313,7 +282,6 @@ class CherryBlossomThemePlugin {
     theme.autoDarkened = false;
     theme.preferredEditorTheme = EDITOR_THEME_ID;
 
-    // Vibrant sakura pink with petal cream and warm bark/tan neutrals. No neon, blue, or purple.
     theme.primaryColor = COLORS.pink;
     theme.primaryTextColor = "#2B1A20";
     theme.darkenedPrimaryColor = COLORS.pinkDeep;
@@ -358,7 +326,7 @@ class CherryBlossomThemePlugin {
         return;
       }
     } catch (_) {
-      // get() may throw when a theme does not exist.
+      //NOOP
     }
 
     this.themes.add(appTheme);
@@ -386,7 +354,7 @@ class CherryBlossomThemePlugin {
     try {
       this.DialogBox("CherryBlossom Installed", html, "Enjoy 🌸");
     } catch (_) {
-      // Theme registration should never fail just because a dialog cannot open.
+      //NOOP
     }
   }
 
@@ -400,14 +368,14 @@ class CherryBlossomThemePlugin {
     try {
       this.editorThemes.unregister(EDITOR_THEME_ID);
     } catch (_) {
-      // Nothing to clean up.
+      //NOOP
     }
 
     if (typeof this.themes.remove === "function") {
       try {
         this.themes.remove(APP_THEME_NAME);
       } catch (_) {
-        // Ignore if Acode has already removed it.
+        //NOOP
       }
     }
   }
